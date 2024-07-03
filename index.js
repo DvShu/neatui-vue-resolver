@@ -12,6 +12,9 @@ export default function neatuiResolver() {
           const componentName = name.slice(2);
           const styleName = kebabCase(componentName);
           let effectStyle = `@asteres/neatui-vue/style/${styleName}/index.js`;
+          if (componentName.endsWith("Item")) {
+            effectStyle = undefined;
+          }
           if (componentName.endsWith("Icon")) {
             effectStyle = "@asteres/neatui-vue/style/icon/index.js";
           }
