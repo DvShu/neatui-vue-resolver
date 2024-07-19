@@ -18,6 +18,9 @@ export default function neatuiResolver() {
           if (componentName.endsWith("Icon")) {
             effectStyle = "@asteres/neatui-vue/style/icon/index.js";
           }
+          if (componentName === "CheckboxGroup") {
+            effectStyle = undefined;
+          }
           return {
             name: componentName,
             from: "@asteres/neatui-vue",
