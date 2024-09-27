@@ -37,6 +37,10 @@ export default function neatuiResolver() {
             importName: "Clickoutside",
             styleName: undefined,
           },
+          Loading: {
+            importName: "Loading",
+            styleName: "@asteres/neatui-vue/style/loading/index.js",
+          },
         };
         if (Object.hasOwn(directives, name)) {
           return {
