@@ -21,6 +21,9 @@ export default function neatuiResolver() {
           if (componentName === "CheckboxGroup") {
             effectStyle = undefined;
           }
+          if (componentName.endsWith("Popover")) {
+            effectStyle = "@asteres/neatui-vue/style/popover/index.js";
+          }
           return {
             name: componentName,
             from: "@asteres/neatui-vue",
