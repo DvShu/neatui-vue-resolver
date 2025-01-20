@@ -8,25 +8,34 @@ export default function neatuiResolver() {
     {
       type: "component",
       resolve: (name) => {
-        if (name.startsWith("Nt")) {
+        if (name.startsWith("Lv")) {
           const componentName = name.slice(2);
           const styleName = kebabCase(componentName);
-          let effectStyle = `@asteres/neatui-vue/style/${styleName}/index.js`;
+          let effectStyle = `litos-ui-vue/style/${styleName}/index.js`;
           if (componentName.endsWith("Item")) {
             effectStyle = undefined;
           }
           if (componentName.endsWith("Icon")) {
-            effectStyle = "@asteres/neatui-vue/style/icon/index.js";
+            effectStyle = "litos-ui-vue/style/icon/index.js";
           }
           if (componentName === "CheckboxGroup") {
             effectStyle = undefined;
           }
           if (componentName.endsWith("Popover")) {
-            effectStyle = "@asteres/neatui-vue/style/popover/index.js";
+            effectStyle = "litos-ui-vue/style/popover/index.js";
           }
           return {
             name: componentName,
-            from: "@asteres/neatui-vue",
+            from: "litos-ui-vue",
+            sideEffects: effectStyle,
+          };
+        } else if (name.startsWith("L")) {
+          const componentName = name.slice(1);
+          let effectName = componentName;
+          let effectStyle = `litos-ui/styles/${kebabCase(componentName)}.css`;
+          return {
+            name: effectName,
+            from: "litos-ui",
             sideEffects: effectStyle,
           };
         }
@@ -42,13 +51,13 @@ export default function neatuiResolver() {
           },
           Loading: {
             importName: "Loading",
-            styleName: "@asteres/neatui-vue/style/loading/index.js",
+            styleName: "litos-ui-vue/style/loading/index.js",
           },
         };
         if (Object.hasOwn(directives, name)) {
           return {
             name: directives[name].importName,
-            from: "@asteres/neatui-vue",
+            from: "litos-ui-vue",
             sideEffects: directives[name].styleName,
           };
         }
